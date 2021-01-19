@@ -15,7 +15,6 @@ namespace TechnicalAssignment
             
             ArrayList valid = new ArrayList();
             ArrayList invalid = new ArrayList();
-            // string path = "test.csv";
 
             //Finding file
             try 
@@ -56,7 +55,7 @@ namespace TechnicalAssignment
             } 
             catch(Exception) 
             {
-                Console.WriteLine("\nThe name you entered was invalid");
+                Console.WriteLine("\nThe file name you entered was not found");
             }
             finally 
             {
