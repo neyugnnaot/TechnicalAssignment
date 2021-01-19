@@ -1,0 +1,5 @@
+C:\Users\Toan\DotNet Projects\TechnicalAssignment\bin\Debug\net5.0\publish\TechnicalAssignment.exe
+C:\Users\Toan\DotNet Projects\TechnicalAssignment\bin\Debug\net5.0\publish\TechnicalAssignment.dll
+C:\Users\Toan\DotNet Projects\TechnicalAssignment\bin\Debug\net5.0\publish\TechnicalAssignment.deps.json
+C:\Users\Toan\DotNet Projects\TechnicalAssignment\bin\Debug\net5.0\publish\TechnicalAssignment.runtimeconfig.json
+C:\Users\Toan\DotNet Projects\TechnicalAssignment\bin\Debug\net5.0\publish\TechnicalAssignment.pdb
