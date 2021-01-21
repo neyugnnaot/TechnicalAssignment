@@ -10,8 +10,8 @@ namespace TechnicalAssignment
         static void Main(string[] args)
         {
             //Asking user for file name
-            Console.WriteLine("\nHello! Please enter the name of the .csv file...");
-            string path = Console.ReadLine(); ;
+            Console.WriteLine("\nHello! Please enter the name of the .csv file:");
+            string path = Console.ReadLine();
             
             ArrayList valid = new ArrayList();
             ArrayList invalid = new ArrayList();
@@ -19,16 +19,16 @@ namespace TechnicalAssignment
             //Finding file
             try 
             {
+                //Parsing file
                 var parser = new Microsoft.VisualBasic.FileIO.TextFieldParser(path); 
-                parser.SetDelimiters(new string[] {";"});
+                parser.SetDelimiters(new string[] {","});
                 parser.ReadLine();
 
-                //Parsing file
                 Regex pattern = new Regex(@"^[a-z]\w*(\.\w+)*@[\w]*[.][\w]*");
                 while(!parser.EndOfData) 
                 {
                     //Validating emails
-                    string[] line = parser.ReadLine().Split(",");
+                    string[] line = parser.ReadFields();
                     if(pattern.IsMatch(line[2]))
                     {
                         valid.Add(line[2]);
@@ -37,7 +37,6 @@ namespace TechnicalAssignment
                     {
                         invalid.Add(line[2]); 
                     }
-                    
                 }
 
                 //Printing valid and invalid emails
