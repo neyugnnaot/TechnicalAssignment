@@ -1,68 +1,100 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using Microsoft.VisualBasic.FileIO; 
 
 namespace TechnicalAssignment
 {
-    class Program
+    //Class to handle parsing emails
+    class CSVParser
     {
-        //Email Regex
-        static readonly Regex PATTERN = new Regex(@"^[a-z]\w*(\.\w+)*@[\w]*[.][\w]*");
+        private TextFieldParser _parser; 
+        private readonly List<string> _validEmails;
+        private readonly List<string> _invalidEmails;
 
-        static void PrintList(List<string> list)
+        public List<string> ValidEmails => _validEmails;
+        public List<string> InvalidEmails => _invalidEmails;
+
+        public CSVParser(string path)
         {
-            list.ForEach(x => Console.WriteLine(x)); 
+            _validEmails = new List<string>();
+            _invalidEmails = new List<string>();
+            _parser = new TextFieldParser(path);
         }
 
-        static void ValidateEmails()
+        public void ParseCSV()
+        {
+            _parser.SetDelimiters(new string[] { "," });
+            _parser.ReadLine();
+
+            while (!_parser.EndOfData)
+            {
+                //Validating emails
+                string[] line = _parser.ReadFields();
+                string email = line[2];
+
+                if (EmailValidator.ValidateEmail(email))
+                {
+                    _validEmails.Add(email);
+                }
+                else
+                {
+                    _invalidEmails.Add(email);
+                }
+            }
+        }
+    }
+    
+    class EmailValidator
+    {
+                //Email Regex
+        static readonly Regex PATTERN = new Regex(@"^[a-z]\w*(\.\w+)*@[\w]*[.][\w]*");
+
+        public static bool ValidateEmail(string email)
+        {
+            return PATTERN.IsMatch(email); 
+        }
+
+    }
+
+    //Class to handle outputs for data
+    class OutputHandler
+    {
+        public static void PrintList(List<string> list)
+        {
+            list.ForEach(item => Console.WriteLine(item));
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
         {
             //Asking user for file name
             Console.WriteLine("\nHello! Please enter the name of the .csv file:");
             string path = Console.ReadLine();
 
-            List<string> valid = new List<string>();
-            List<string> invalid = new List<string>();
-
-            //Finding file
             try
             {
-                //Parsing file
-                var parser = new Microsoft.VisualBasic.FileIO.TextFieldParser(path);
-                parser.SetDelimiters(new string[] { "," });
-                parser.ReadLine();
-
-                while (!parser.EndOfData)
-                {
-                    //Validating emails
-                    string[] line = parser.ReadFields();
-                    if (PATTERN.IsMatch(line[2]))
-                    {
-                        valid.Add(line[2]);
-                    }
-                    else
-                    {
-                        invalid.Add(line[2]);
-                    }
-                }
+                CSVParser parser = new CSVParser(path);
+                parser.ParseCSV();
 
                 //Printing valid and invalid emails
                 Console.WriteLine("\nValid Emails:");
-                PrintList(valid);
+                OutputHandler.PrintList(parser.ValidEmails);
                 Console.WriteLine("\nInvalid Emails:");
-                PrintList(invalid);
+                OutputHandler.PrintList(parser.InvalidEmails);
 
             }
             catch (Exception)
             {
                 Console.WriteLine("\nThe file name you entered was not found");
             }
-        }
+            finally
+            {
+                Console.WriteLine("\nThank you for using this program\nPress any key to exit...");
+                Console.ReadKey(true);
+            }
 
-        static void Main(string[] args)
-        {
-            ValidateEmails(); 
-            Console.WriteLine("\nThank you for using this program\nPress any key to exit...");
-            Console.ReadKey(true);
         }
     }
 }
