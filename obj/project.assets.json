@@ -13,19 +13,21 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Toan\\DotNet Projects\\TechnicalAssignment\\TechnicalAssignment.csproj",
+      "projectUniqueName": "C:\\Users\\Toan\\source\\repos\\TechnicalAssignment(Refactor)\\TechnicalAssignment.csproj",
       "projectName": "TechnicalAssignment",
-      "projectPath": "C:\\Users\\Toan\\DotNet Projects\\TechnicalAssignment\\TechnicalAssignment.csproj",
+      "projectPath": "C:\\Users\\Toan\\source\\repos\\TechnicalAssignment(Refactor)\\TechnicalAssignment.csproj",
       "packagesPath": "C:\\Users\\Toan\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Toan\\DotNet Projects\\TechnicalAssignment\\obj\\",
+      "outputPath": "C:\\Users\\Toan\\source\\repos\\TechnicalAssignment(Refactor)\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Toan\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Toan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

@@ -14,3 +14,19 @@ C:\Users\Toan\DotNet Projects\TechnicalAssignment\obj\Debug\net5.0\TechnicalAssi
 C:\Users\Toan\DotNet Projects\TechnicalAssignment\obj\Debug\net5.0\ref\TechnicalAssignment.dll
 C:\Users\Toan\DotNet Projects\TechnicalAssignment\obj\Debug\net5.0\TechnicalAssignment.pdb
 C:\Users\Toan\DotNet Projects\TechnicalAssignment\obj\Debug\net5.0\TechnicalAssignment.genruntimeconfig.cache
+C:\Users\Toan\source\repos\TechnicalAssignment(Refactor)\bin\Debug\net5.0\TechnicalAssignment.exe
+C:\Users\Toan\source\repos\TechnicalAssignment(Refactor)\bin\Debug\net5.0\TechnicalAssignment.deps.json
+C:\Users\Toan\source\repos\TechnicalAssignment(Refactor)\bin\Debug\net5.0\TechnicalAssignment.runtimeconfig.json
+C:\Users\Toan\source\repos\TechnicalAssignment(Refactor)\bin\Debug\net5.0\TechnicalAssignment.runtimeconfig.dev.json
+C:\Users\Toan\source\repos\TechnicalAssignment(Refactor)\bin\Debug\net5.0\TechnicalAssignment.dll
+C:\Users\Toan\source\repos\TechnicalAssignment(Refactor)\bin\Debug\net5.0\ref\TechnicalAssignment.dll
+C:\Users\Toan\source\repos\TechnicalAssignment(Refactor)\bin\Debug\net5.0\TechnicalAssignment.pdb
+C:\Users\Toan\source\repos\TechnicalAssignment(Refactor)\obj\Debug\net5.0\TechnicalAssignment.csprojAssemblyReference.cache
+C:\Users\Toan\source\repos\TechnicalAssignment(Refactor)\obj\Debug\net5.0\TechnicalAssignment.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Toan\source\repos\TechnicalAssignment(Refactor)\obj\Debug\net5.0\TechnicalAssignment.AssemblyInfoInputs.cache
+C:\Users\Toan\source\repos\TechnicalAssignment(Refactor)\obj\Debug\net5.0\TechnicalAssignment.AssemblyInfo.cs
+C:\Users\Toan\source\repos\TechnicalAssignment(Refactor)\obj\Debug\net5.0\TechnicalAssignment.csproj.CoreCompileInputs.cache
+C:\Users\Toan\source\repos\TechnicalAssignment(Refactor)\obj\Debug\net5.0\TechnicalAssignment.dll
+C:\Users\Toan\source\repos\TechnicalAssignment(Refactor)\obj\Debug\net5.0\ref\TechnicalAssignment.dll
+C:\Users\Toan\source\repos\TechnicalAssignment(Refactor)\obj\Debug\net5.0\TechnicalAssignment.pdb
+C:\Users\Toan\source\repos\TechnicalAssignment(Refactor)\obj\Debug\net5.0\TechnicalAssignment.genruntimeconfig.cache
