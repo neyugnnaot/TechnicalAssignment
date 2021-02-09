@@ -1,53 +1,86 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using Microsoft.VisualBasic.FileIO; 
 
 namespace TechnicalAssignment
 {
-    //Class to handle parsing emails
-    class CSVParser
+    //Class to represent CSV file
+    class CSVFile
     {
-        private TextFieldParser _parser; 
-        private readonly List<string> _validEmails;
-        private readonly List<string> _invalidEmails;
+        public CSVParser Parser { get; set; }
+        public CSVData Data { get; set; }
 
-        public List<string> ValidEmails => _validEmails;
-        public List<string> InvalidEmails => _invalidEmails;
-
-        public CSVParser(string path)
+        public CSVFile(string path)
         {
-            _validEmails = new List<string>();
-            _invalidEmails = new List<string>();
-            _parser = new TextFieldParser(path);
+            //passing file path into parser
+            Parser = new CSVParser(path);
+            Data = new CSVData(); 
         }
 
         public void ParseCSV()
         {
-            _parser.SetDelimiters(new string[] { "," });
-            _parser.ReadLine();
+            Parser.ParseEmails(Data.ValidEmails, Data.InvalidEmails); 
+        }
+    }
 
-            while (!_parser.EndOfData)
+    //Class to handle parsing csv files
+    class CSVParser
+    {
+        public TextFieldParser Parser { get; set; }
+
+        public CSVParser(string path)
+        {
+            Parser = new TextFieldParser(path); 
+        }
+
+        public void ParseEmails(List<string> valid, List<string> invalid)
+        {
+            Parser.SetDelimiters(new string[] { "," });
+            //To ignore the first line
+            Parser.ReadLine();
+
+            while (!Parser.EndOfData)
             {
                 //Validating emails
-                string[] line = _parser.ReadFields();
+                string[] line = Parser.ReadFields();
                 string email = line[2];
 
                 if (EmailValidator.ValidateEmail(email))
                 {
-                    _validEmails.Add(email);
+                    valid.Add(email);
                 }
                 else
                 {
-                    _invalidEmails.Add(email);
+                    invalid.Add(email);
                 }
             }
         }
+
+    }
+
+    //Class to store data of CSV
+    class CSVData
+    {
+        //Unused but added to represent full rows in case for future 
+        public List<(string first, string last, string email)> Entries { get; set; }
+        
+        public List<string> ValidEmails { get; set; }
+        public List<string> InvalidEmails { get; set; }
+
+        public CSVData()
+        {
+            Entries = new List<(string, string, string)>();
+            ValidEmails = new List<string>();
+            InvalidEmails = new List<string>();
+        }
     }
     
+    //Class to handle email validations
     class EmailValidator
     {
-                //Email Regex
+        //Email Regex
         static readonly Regex PATTERN = new Regex(@"^[a-z]\w*(\.\w+)*@[\w]*[.][\w]*");
 
         public static bool ValidateEmail(string email)
@@ -75,19 +108,28 @@ namespace TechnicalAssignment
 
             try
             {
-                CSVParser parser = new CSVParser(path);
-                parser.ParseCSV();
+                //Parsing file with path given by user
+                CSVFile csv = new CSVFile(path);
+                csv.ParseCSV();
 
                 //Printing valid and invalid emails
                 Console.WriteLine("\nValid Emails:");
-                OutputHandler.PrintList(parser.ValidEmails);
+                OutputHandler.PrintList(csv.Data.ValidEmails);
                 Console.WriteLine("\nInvalid Emails:");
-                OutputHandler.PrintList(parser.InvalidEmails);
+                OutputHandler.PrintList(csv.Data.InvalidEmails);
 
             }
-            catch (Exception)
+            catch (FileNotFoundException)
             {
                 Console.WriteLine("\nThe file name you entered was not found");
+            }
+            catch (ArgumentNullException)
+            {
+                Console.WriteLine("\nYou did not enter a file name");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
             }
             finally
             {
